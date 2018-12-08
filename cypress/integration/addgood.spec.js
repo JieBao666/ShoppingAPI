@@ -35,7 +35,6 @@ describe("Add Good page", () => {
     cy.contains('Thanks for add Good!').should('exist');
     cy.get('.col-md-6').find(':nth-child(6)').find('.btn').click()
     cy.url().should('include','/goods' )
-    cy.get('tbody').find('tr').should('have.length', 7)
   });
   it("shows error messages for incomplete form fields", () => {
     cy.get('.col-md-6').find(':nth-child(6)').find('.btn').click()
@@ -48,6 +47,5 @@ describe("Add Good page", () => {
     cy.contains('Thanks for add Good!').should('exist');
     cy.get('.col-md-6').find(':nth-child(6)').find('.btn').click()
     cy.url().should('include','/goods' )
-    cy.get('tbody').find('tr').should('have.length', 7)
   });
 })
