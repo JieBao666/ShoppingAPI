@@ -19,7 +19,7 @@ import GoodForm from '@/components/GoodForm'
 export default {
   data () {
     return {
-      good: {goods_name: 'Coke', amount: 0.0, goods_price: 0.0, id: ''},
+      good: {goods_name: 'Coke', amount: '', goods_price: '', id: ''},
       messagetitle: ' Add Good '
     }
   },

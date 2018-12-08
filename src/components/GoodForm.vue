@@ -26,12 +26,12 @@
               <label class="form-control-label" name="amount">Amount (Enter a number between 1 and 2000)</label>
               <input class="form__input" type = decimal v-model.trim="amount"/>
             </div>
+            <div class="error" v-if="!$v.amount.between">Amount must be between 1 and 2000</div>
             <div class="error" v-if="!$v.goods_price.between">Goods Price must be between 1 and 10</div>
             <div class="form-group" :class="{ 'form-group--error': $v.goods_price.$error }">
               <label class="form-control-label" name="goods_price">Good Price (Enter a number between 1 and 10)</label>
               <input class="form__input" v-model.trim="$v.goods_price.$model"/>
             </div>
-            <div class="error" v-if="!$v.amount.between">Amount must be between 1 and 2000</div>
             <p>
               <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">{{ goodBtnTitle }}</button>
             </p>
