@@ -4,8 +4,10 @@
     <div class="container mt-3 mt-sm-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
+          <template v-if="childDataLoaded">
           <good-form :good="good" goodBtnTitle="Update Good"
                      @good-is-created-updated="updateGood"></good-form>
+          </template>
         </div><!-- /col -->
       </div><!-- /row -->
     </div><!-- /container -->

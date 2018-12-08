@@ -1,0 +1,8 @@
+[
+    { "goods_name": "apple", "id": 1000, "goods_price": "2", "amount": 1002 },
+    { "goods_name": "orange", "id": 1002, "goods_price": "1", "amount": 1001 },
+    { "goods_name": "beef", "id": 1003, "goods_price": "3", "amount": 1000 },
+    { "goods_name": "mutton", "id": 1004, "goods_price": "2.5", "amount": 1000 },
+    { "goods_name": "pork", "id": 1005, "goods_price": "2.5", "amount": 1000 },
+    { "goods_name": "cod", "id": 1006, "goods_price": "4.5", "amount": 1000 }
+]

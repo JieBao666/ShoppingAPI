@@ -7,33 +7,36 @@
                 <option value="Coke">Coke</option>
                 <option value="Noodle">Noodle</option>
                 <option value="Tomato">Tomato</option>
+                <option value="apple">apple</option>
+                <option value="orange">orange</option>
+                <option value="beef">beef</option>
+                <option value="mutton">mutton</option>
+                <option value="pork">pork</option>
+                <option value="cod">cod</option>
               </select>
             </div>
             <div class="form-group" :class="{ 'form-group--error': $v.id.$error }">
               <label class="form-label">ID</label>
-              <input class="form__input" v-model.trim="$v.id.$model"/>
+              <input class="form__input" type = decimal v-model.trim="id"/>
             </div>
             <div class="error" v-if="!$v.id.required">ID is Required</div>
             <div class="error" v-if="!$v.id.minLength">ID must have {{$v.id.$params.minLength.min}} letters.
             </div>
             <div class="form-group" :class="{ 'form-group--error': $v.amount.$error }">
               <label class="form-control-label" name="amount">Amount (Enter a number between 1 and 2000)</label>
-              <input class="form__input" type="number" v-model.trim="amount"/>
+              <input class="form__input" type = decimal v-model.trim="amount"/>
             </div>
             <div class="error" v-if="!$v.goods_price.between">Goods Price must be between 1 and 10</div>
             <div class="form-group" :class="{ 'form-group--error': $v.goods_price.$error }">
               <label class="form-control-label" name="goods_price">Good Price (Enter a number between 1 and 10)</label>
-              <input class="form__input" type="number" v-model.trim="goods_price"/>
+              <input class="form__input" v-model.trim="$v.goods_price.$model"/>
             </div>
             <div class="error" v-if="!$v.amount.between">Amount must be between 1 and 2000</div>
-            <div class="form-group" :class="{ 'form-group--error': $v.message.$error }">
-              <label class="form__label">Personal Message</label>
-              <input class="form__input" v-model.trim="$v.message.$model"/>
-            </div>
-            <div class="error" v-if="!$v.message.required">Message is Required</div>
-            <div class="error" v-if="!$v.message.minLength">Message must have at least {{$v.message.$params.minLength.min}} letters.</div>
             <p>
-              <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">Add Good</button>
+              <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">{{ goodBtnTitle }}</button>
+            </p>
+            <p>
+              <a href="/goods" class="btn btn-primary btn1" role="button">Manage Goods</a>
             </p>
             <p class="typo__p" v-if="submitStatus === 'OK'">Thanks for add Good!</p>
             <p class="typo__p" v-if="submitStatus === 'ERROR'">Please Fill in the Form Correctly.</p>
@@ -46,7 +49,6 @@ import Vue from 'vue'
 import VueForm from 'vueform'
 import Vuelidate from 'vuelidate'
 import VueSweetalert from 'vue-sweetalert'
-import GoodService from '@/services/goodservice'
 import { required, minLength, between } from 'vuelidate/lib/validators'
 Vue.use(VueForm, {
   inputClasses: {
@@ -62,7 +64,6 @@ export default {
   data () {
     return {
       messagetitle: ' Good ',
-      message: this.good.message,
       goods_name: this.good.goods_name,
       amount: this.good.amount,
       goods_price: this.good.goods_price,
@@ -71,10 +72,6 @@ export default {
     }
   },
   validations: {
-    message: {
-      required,
-      minLength: minLength(5)
-    },
     amount: {
       required,
       between: between(1, 2000)
@@ -103,7 +100,6 @@ export default {
             goods_name: this.goods_name,
             amount: this.amount,
             goods_price: this.goods_price,
-            message: this.message,
             id: this.id
           }
           this.good = good
@@ -111,19 +107,6 @@ export default {
           this.$emit('good-is-created-updated', this.good)
         }, 500)
       }
-    },
-    submitGood: function (good) {
-      console.log('submitGood!')
-      console.log('Submitting in submitGood : ' + good)
-      GoodService.postGood(good)
-        .then(response => {
-          // JSON responses are automatically parsed.
-          console.log(response)
-        })
-        .catch(error => {
-          this.errors.push(error)
-          console.log(error)
-        })
     }
   }
 }
