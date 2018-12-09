@@ -37,4 +37,14 @@ describe("Home page", () => {
       // etc
     });
   })
-});
+  it("shows contents", () => {
+    cy.get(".hero").find(':nth-child(4)').should('contain','This is the homepage of  Shopping Web app' )
+    cy.get('tr:nth-child(1)').within(() => {
+      cy.get(':nth-child(2)').should('contain', 'Out with Boring Prumt - Giving has never been so easy.')
+      cy.get(':nth-child(3)').should('contain', 'Just click here to go to')
+      cy.get(':nth-child(4)').should('contain', 'the Good page and shop what you want')
+    })
+    })
+    // etc
+  });
+
