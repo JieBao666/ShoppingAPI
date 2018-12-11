@@ -5,7 +5,7 @@ describe("Home page", () => {
   });
 
   it("Shows a header", () => {
-    cy.get(".vue-title").should('contain','Homer for Shopping !!');
+    cy.get(".vue-title").should('contain','Home for Shopping !!');
 
 
     cy.get(".lead").should('contain','Time for shopping !!');
