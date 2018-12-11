@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <h1 class="vue-title">Homer for Shopping !!</h1>
+    <h1 class="vue-title">Home for Shopping !!</h1>
 
     <table align="center">
       <tr>
